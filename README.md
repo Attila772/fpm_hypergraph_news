@@ -11,7 +11,7 @@ This repository contains supplementary scripts and data associated with the rese
 ## Installation
 1. Clone the repository:
     ```sh
-    git clone <repository_url>
+    git clone https://github.com/Attila772/fpm_hypergraph_news
     ```
 2. Make a virtual environment and activate it:
    ```sh
