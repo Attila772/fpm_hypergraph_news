@@ -62,18 +62,15 @@ else:
             df_only_new = df_filtered[['GKGRECORDID', 'Filtered_Themes_list', 'General_Tone']]
             print(df_only_new.head(10))
 
-            # Create new directory if "2021_wrangled" exists
             if os.path.exists(wrangled_folder):
                 new_folder_name = os.path.splitext(csv_file)[0]
                 new_folder_path = os.path.join(wrangled_folder, new_folder_name)
                 os.makedirs(new_folder_path, exist_ok=True)
-
                 csv_output_path = os.path.join(new_folder_path, f"{new_folder_name}.csv")
                 transactions_output_path = os.path.join(new_folder_path, f"{new_folder_name}_t.txt")
-
-
                 matrix_data_df = pd.DataFrame(index=df_filtered.index)
                 
+                #Make one hot encoded matrix and save it to a CSV file
                 for theme in tqdm(themes):
                     matrix_data_df[f'Theme_{theme}'] = df_filtered['Filtered_Themes_list'].apply(
                         lambda x: 1 if any(theme in t for t in x) else 0
